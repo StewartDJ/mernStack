@@ -22,7 +22,6 @@ router.route('/add').post((req, res) => {
         }
     )
 
-
     newExercise
     .save()
     .then(()=> {
@@ -42,12 +41,12 @@ router.route('/:id').get((req, res) => {
   router.route('/:id').delete((req, res) => {  
     Exercise.findByIdAndDelete(req.params.id)  
       .then(() => res.json('Exercise deleted.'))  
-      .catch(err => res.status(400).json('Error: ' + err));  
+      .catch((err) => res.status(400).json('Error: ' + err));  
   });  
 
   router.route('/update/:id').post((req, res) => {  
     Exercise.findById(req.params.id)  
-      .then(exercise => {  
+      .then((exercise) => {  
         exercise.username = req.body.username;  
         exercise.description = req.body.description;  
         exercise.duration = Number(req.body.duration);  
